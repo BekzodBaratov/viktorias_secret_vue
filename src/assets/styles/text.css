@@ -1,0 +1,37 @@
+.text__big {
+  @apply text-5xl text-color-black pb-6 font-medium;
+}
+.text__big-2 {
+  @apply text-4xl text-color-black font-medium;
+}
+.text__big-3 {
+  @apply text-3xl text-color-black font-medium;
+}
+.text__big-4 {
+  @apply text-xl text-color-black font-medium;
+}
+
+.text__primary {
+  @apply font-bold text-lg text-color-black;
+}
+.text__primary-white {
+  @apply font-semibold text-base text-white;
+}
+.text__secondary {
+  @apply font-normal text-base text-color-black;
+}
+.text__secondary-gray {
+  @apply font-normal text-base text-color-secondary;
+}
+.text__primary-pink {
+  @apply font-normal text-base text-color-primary;
+}
+.text__primary-pink-bold {
+  @apply font-bold text-base text-color-primary;
+}
+.link-underline {
+  @apply underline cursor-pointer;
+}
+.link {
+  @apply cursor-pointer hover:underline;
+}
