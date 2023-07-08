@@ -2,7 +2,7 @@
   <main class="category pb-6">
     <h2 class="text__big-2 text-center py-8">Категории</h2>
     <div class="banner pb-[1px]">
-      <img src="../assets/images/BANNER.png" alt="" />
+      <img src="../assets/images/slider2.png" alt="image" />
     </div>
     <ul class="categories grid grid-cols-2 md:grid-cols-3 gap-[1px]">
       <li v-for="ct in categories" :key="ct.id" class="relative">
