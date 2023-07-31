@@ -25,6 +25,10 @@ module.exports = {
         card: "0 2px 10px rgba(0, 0, 0, 0.2)",
         card2: "0 -4px 10px rgba(0, 0, 0, 0.2)",
       },
+      aspectRatio: {
+        "16/9": "16/9",
+        banner: "19/6",
+      },
     },
   },
   plugins: [],

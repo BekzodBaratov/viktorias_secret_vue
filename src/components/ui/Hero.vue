@@ -3,18 +3,16 @@
     <!-- <pre>{{ store.banners }}</pre> -->
 
     <swiper
-      :navigation="true"
-      :slidesPerView="6"
+      :slidesPerView="1"
       :spaceBetween="20"
       :pagination="{ clickable: true }"
       :loop="true"
-      :autoplay="{ delay: 5000 }"
-      :modules="[Navigation, Autoplay]"
+      :autoplay="{ delay: 3000 }"
+      :modules="[Autoplay, Pagination]"
       class="mainSwiper"
     >
       <swiper-slide v-for="bn in store.banners" :key="bn.id">
-        <!-- image_url togirlangandan keyin yoqiladi -->
-        <!-- <img :src="bn.image_url" alt="slider" /> -->
+        <img class="w-full aspect-banner object-cover object-center" :src="bn.image_url" alt="slider" />
       </swiper-slide>
     </swiper>
   </section>
@@ -22,8 +20,8 @@
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation, Autoplay } from "swiper";
+import "swiper/css/pagination";
+import { Autoplay, Pagination } from "swiper";
 
 import { useBannerStore } from "../../stores/banner";
 const store = useBannerStore();
