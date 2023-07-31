@@ -1,1 +1,57 @@
-[]
+{
+  "fuw": {
+    "more": "Ko'proq",
+    "new_arrivals": "YANGI KELGANLAR",
+    "recommended": "Tavsiya etiladi",
+    "new": "Yangi",
+    "add_to_card": "Savatga qo'shish",
+    "fast_show": "Tezkor ko'rish",
+    "trendinf_now": "Hozir trend",
+    "best_sale": "Bu hafta eng yaxshi sotuv",
+    "show_more": "Hammasini ko'rsatish",
+    "gift_certificate": "SOVG'A SERTIFIKATI",
+    "gift_certificate2": "Victoria's Secret sovg'a sertifikati - U buni yaxshi ko'radi sovg'a kartasi",
+    "view_offers": "Takliflarni ko'rish",
+    "main_categories": "Asosiy kategoriyalar",
+    "main_categories2": "1000 dan ortiq 50 ta toifa",
+    "products": "VICTORIA'S SECRET MAHSULOTLARINING O'ZBEKISTONDAGI ONLAYN MA'KONI",
+    "products_desc": "VICTORIA'S SECRET - jahonga mashhur tm Victoria's Secret brendining yuqori sifatli ichki kiyimlari, suzish kiyimlari, kiyim-kechaklari, kosmetika va aksessuarlari onlayn-do'koni. Biz sifatli xizmat ko'rsatish va VIP xizmatiga e'tibor qaratamiz. Saytda faqat \"Victoria's\"ning original mahsulotlari taqdim etiladi. Secret\" O'ZBEKISTONDA tm Victoria's Secret rasmiy katalogidan.",
+    "news": "Yangiliklar / Blog",
+    "news2": "O'QISHGA QIZIQ",
+    "author": "Muallif",
+    "inInstagram": "Instagramdagi istoriyamizni kuzatib boring"
+  },
+  "header": {
+    "order": "YETKAZIB BEPUL! 500 000 so'mdan ortiq buyurtma berganingizda",
+    "catalog": "katalog",
+    "about": "brend haqida",
+    "delivery": "Etkazib berish",
+    "payment": "To'lov",
+    "stock": "Aktsiyalar",
+    "jobs": "ish o'rinlari"
+  },
+  "steps": [
+    {
+      "title": "Etkazib berish bepul",
+      "desc": "500 000 so'mdan ortiq buyurtmalar uchun yetkazib berish bepul"
+    },
+    {
+      "title": "Pulni qaytarish kafolati",
+      "desc": "100% pulni qaytarish kafolati"
+    },
+    {
+      "title": "Moslashuvchan to'lov shakli",
+      "desc": "Bir nechta qulay usullar bilan to'lash"
+    }
+  ],
+  "footer": {
+    "help": "HELP",
+    "payment": "To'lov va yetkazib berish",
+    "exchange": "Qaytarish va almashtirish",
+    "info": "INFO",
+    "about": "Magazin haqida",
+    "my_office": "MENING KABINETIM",
+    "favourites": "Sevimlilar",
+    "contacts": "KONTAKTLAR"
+  }
+}

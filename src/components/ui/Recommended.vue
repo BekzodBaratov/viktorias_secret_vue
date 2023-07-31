@@ -1,7 +1,7 @@
 <template>
   <section class="recommended bg-color-primary2 py-12">
     <div class="container">
-      <ul class="grid grid-cols-2 items-center gap-10">
+      <ul class="grid md:grid-cols-2 items-center gap-10">
         <li>
           <h2 class="text__big-2 pb-4">Рекомендуем</h2>
           <ul class="grid grid-cols-2 gap-8">

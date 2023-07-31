@@ -1,11 +1,14 @@
 <template>
   <swiper
     :navigation="true"
-    :slidesPerView="6"
-    :spaceBetween="10"
     :pagination="{ clickable: true }"
+    :breakpoints="{
+      '300': { slidesPerView: 2, spaceBetween: 20 },
+      '768': { slidesPerView: 3, spaceBetween: 25 },
+      '1024': { slidesPerView: 4, spaceBetween: 30 },
+    }"
     :loop="true"
-    :autoplay="{ delay: 5000 }"
+    :autoplay="{ delay: 4000 }"
     :modules="[Navigation, Autoplay]"
     class="mainSwiper"
   >

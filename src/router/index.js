@@ -13,6 +13,7 @@ import ProductView from "../views/ProductView.vue";
 import SalesView from "../views/SalesView.vue";
 import SignupView from "../views/SignupView.vue";
 import VacancyView from "../views/VacancyView.vue";
+import NotFoundView from "../views/404.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,6 +31,7 @@ const router = createRouter({
     { path: "/sales", name: "sales", component: SalesView, meta: { auth: false } },
     { path: "/signup", name: "signup", component: SignupView, meta: { auth: false, layout: "signup" } },
     { path: "/vacancies", name: "vacancy", component: VacancyView, meta: { auth: false } },
+    { path: "/:pathMatch(.*)*", name: "signup", component: NotFoundView, meta: { auth: false, layout: "notFound" } },
   ],
 });
 

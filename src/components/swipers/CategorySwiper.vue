@@ -1,15 +1,17 @@
 <template>
   <swiper
-    :navigation="true"
-    :slidesPerView="6"
-    :spaceBetween="20"
     :pagination="{ clickable: true }"
+    :breakpoints="{
+      '300': { slidesPerView: 4, spaceBetween: 20 },
+      '768': { slidesPerView: 5, spaceBetween: 25 },
+      '1024': { slidesPerView: 6, spaceBetween: 30 },
+    }"
     :loop="true"
     :autoplay="{ delay: 5000 }"
-    :modules="[Navigation, Autoplay]"
+    :modules="[Autoplay]"
     class="mainSwiper"
   >
-    <swiper-slide v-for="category in categories" :key="category.id">
+    <swiper-slide v-for="category in store.categories" :key="category.id">
       <Category :category="category" />
     </swiper-slide>
   </swiper>
@@ -18,13 +20,16 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation, Autoplay } from "swiper";
+import { Autoplay } from "swiper";
 import img1 from "/src/assets/images/Background(4).png";
 import img2 from "/src/assets/images/Background(5).png";
 import img3 from "/src/assets/images/Background(6).png";
 import img4 from "/src/assets/images/Background(7).png";
 import img5 from "/src/assets/images/Background(8).png";
 import Category from "../cards/category.vue";
+
+import { useCategoryStore } from "../../stores/category";
+const store = useCategoryStore();
 
 const categories = [
   {

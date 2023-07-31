@@ -1,5 +1,5 @@
 <template>
-  <main class="space-y-6 sm:space-y-8 md:space-y-12 lg:space-y-16">
+  <main class="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
     <Hero />
     <Steps />
     <NewArrivals />

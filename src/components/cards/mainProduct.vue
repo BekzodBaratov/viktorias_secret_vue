@@ -1,42 +1,42 @@
 <template>
   <div class="card flex flex-col">
-    <div class="relative overflow-hidden group">
-      <img class="w-full aspect-square object-contain" :src="card.image" alt="image_product" />
+    <div class="relative overflow-hidden group bg-white">
+      <img class="w-full aspect-3/4 object-contain" :src="card.image" alt="image_product" />
       <div class="absolute top-2 left-2">
         <ul class="flex gap-2">
-          <li class="bg-color-danger px-4 py-1 text-center rounded-md text__primary-white" v-if="card.sale">
+          <li
+            class="bg-color-danger px-2 md:px-4 py-0.5 md :py-1 text-center rounded-md font-semibold text-xs text-white"
+            v-if="card.sale"
+          >
             -{{ card.sale }}%
           </li>
-          <li class="bg-color-primary px-4 py-1 text-center rounded-md text__primary-white" v-if="card.new">
-            {{ card.new && "Новинка" }}
+          <li
+            class="bg-color-primary px-2 md:px-4 py-0.5 md :py-1 text-center rounded-md font-semibold text-white text-xs"
+            v-if="card.new"
+          >
+            {{ card.new && t("fuw.new") }}
           </li>
         </ul>
       </div>
       <button
-        class="group-hover:translate-y-0 translate-y-full cursor-pointer absolute bottom-0 inset-x-0 bg-black text-center text__primary-white py-3"
+        class="group-hover:translate-y-0 md:translate-y-full cursor-pointer absolute bottom-0 inset-x-0 bg-black text-center text__primary-white py-2 md:py-3"
       >
-        Добавить в корзину
+        {{ t("fuw.add_to_card") }}
       </button>
       <div class="absolute top-2 right-2">
-        <ul class="group-hover:translate-x-0 translate-x-[130%] flex flex-col gap-3">
+        <ul class="group-hover:translate-x-0 md:translate-x-[130%] flex flex-col gap-3">
           <li>
-            <abbr title="Быстрый просмотр">
+            <abbr @click="heartFilled = !heartFilled" :title="t('fuw.favourites')">
               <div class="bg-white p-2 rounded-md shadow-md flex justify-center items-center">
-                <img class="w-6" src="/src/assets/images/icons/heart.svg" alt="heart" />
+                <img v-if="!heartFilled" class="w-5 md:w-6" src="/src/assets/images/icons/heart.svg" alt="heart" />
+                <img v-else class="w-5 md:w-6" src="/src/assets/images/icons/heart_2.svg" alt="heart" />
               </div>
             </abbr>
           </li>
           <li>
-            <abbr title="Быстрый просмотр">
+            <abbr @click="fastShowModal = true" title="Быстрый просмотр">
               <div class="bg-white p-2 rounded-md shadow-md flex justify-center items-center">
-                <img class="w-6" src="/src/assets/images/icons/Quickview.svg" alt="heart" />
-              </div>
-            </abbr>
-          </li>
-          <li>
-            <abbr title="Быстрый просмотр">
-              <div class="bg-white p-2 rounded-md shadow-md flex justify-center items-center">
-                <img class="w-6" src="/src/assets/images/icons/compare.svg" alt="heart" />
+                <img class="w-5 md:w-6" src="/src/assets/images/icons/Quickview.svg" alt="heart" />
               </div>
             </abbr>
           </li>
@@ -51,12 +51,18 @@
         <p class="text-sm line-through text-color-black2">{{ formatNumber(card.price) }}</p>
       </div>
     </div>
+    <Modal :data="card" :is-open="fastShowModal" @closeModal="fastShowModal = false" :loading="false" />
   </div>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import formatNumber from "../../helpers/formatNumber";
+import Modal from "../modal/ProductModal.vue";
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+const heartFilled = ref(false);
+const fastShowModal = ref(false);
 
 const props = defineProps(["card"]);
 const card = computed(() => props.card);

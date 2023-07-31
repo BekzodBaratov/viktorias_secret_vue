@@ -4,29 +4,29 @@
       <ul class="grid gap-6 xs:grid-cols-2 md:grid-cols-3 justify-between py-8 border-b">
         <li class="flex gap-2 items-center">
           <div>
-            <img width="40px" src="/src/assets/images/icons/002-delivery-truck1.svg" alt="002-delivery-truck" />
+            <img width="40" src="/src/assets/images/icons/002-delivery-truck1.svg" alt="002-delivery-truck" />
           </div>
           <div>
-            <h3 class="text__primary">Бесплатная доставка</h3>
-            <p class="text__secondary">Бесплатная доставка при заказе свыше 500 000 сум</p>
-          </div>
-        </li>
-        <li class="flex gap-2 items-center">
-          <div>
-            <img width="40px" src="/src/assets/images/icons/guarantee.svg" alt="002-delivery-truck" />
-          </div>
-          <div>
-            <h3 class="text__primary">Гарантия возврата денег</h3>
-            <p class="text__secondary">100% гарантия возврата денег</p>
+            <h3 class="text__primary">{{ t("steps[0].title") }}</h3>
+            <p class="text__secondary">{{ t("steps[0].desc") }}</p>
           </div>
         </li>
         <li class="flex gap-2 items-center">
           <div>
-            <img width="40px" src="/src/assets/images/icons/credit-card.svg" alt="002-delivery-truck" />
+            <img width="40" src="/src/assets/images/icons/guarantee.svg" alt="002-delivery-truck" />
           </div>
           <div>
-            <h3 class="text__primary">Гибкая форма оплаты</h3>
-            <p class="text__secondary">Оплачивайте несколькими удобным способом</p>
+            <h3 class="text__primary">{{ t("steps[1].title") }}</h3>
+            <p class="text__secondary">{{ t("steps[1].desc") }}</p>
+          </div>
+        </li>
+        <li class="flex gap-2 items-center">
+          <div>
+            <img width="40" src="../../assets/images/icons/credit-card.svg" alt="002-delivery-truck" />
+          </div>
+          <div>
+            <h3 class="text__primary">{{ t("steps[2].title") }}</h3>
+            <p class="text__secondary">{{ t("steps[2].desc") }}</p>
           </div>
         </li>
       </ul>
@@ -35,5 +35,7 @@
 </template>
 
 <script setup>
+import { useI18n } from "vue-i18n";
 const props = defineProps({ hasContainer: { type: Boolean, default: false } });
+const { t } = useI18n();
 </script>

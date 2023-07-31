@@ -1,14 +1,15 @@
 <template>
-  <main class="order">
-    <div class="container">
+  <main class="order relative min-h-[100vh]">
+    <div class="sm:container mx-auto">
+      <pre>{{ data[0] }}</pre>
       <h2 class="text__big-2 text-center py-10">Оформление заказа</h2>
       <div class="grid lg:grid-cols-[1.6fr_1fr] gap-12 pb-12 items-start">
         <div>
-          <div class="bg-color-primary flex items-center gap-2 py-2 px-3 mb-8">
+          <div class="hidden sm:flex bg-color-primary items-center gap-2 py-2 px-3 mb-8">
             <img src="../assets/images/icons/fire.svg" alt="fire" />
             <p class="text-white">Пожалуйста, проверьте сейчас, пока ваши товары не распроданы!</p>
           </div>
-          <div class="relative overflow-x-auto">
+          <div class="hidden sm:block relative overflow-x-auto">
             <table class="w-full mb-12">
               <thead class="border-b text-left">
                 <tr>
@@ -47,7 +48,15 @@
               </tbody>
             </table>
           </div>
-          <div class="flex justify-between">
+          <div class="sm:hidden container">
+            <div class="flex flex-col gap-4">
+              <div class="grid grid-cols-[1fr_3fr] gap-4" v-for="pr in data" :key="pr.id">
+                <img class="w-full h-full object-cover" :src="pr.img" alt="product image" />
+                <div>{{ pr.title }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden sm:flex justify-between">
             <SButton
               @click="viewMoreBtn = true"
               text=""
@@ -84,8 +93,8 @@
             </SButton>
           </div>
         </div>
-        <div class="lg:order-1">
-          <div class="card shadow-card">
+        <div class="absolute sm:static bottom-0 w-full lg:order-1">
+          <div class="card shadow-card2 sm:shadow-card bg-white">
             <div class="border-b">
               <div class="flex justify-between gap-2 items-center px-6">
                 <div class="flex gap-2 items-center">

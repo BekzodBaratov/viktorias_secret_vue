@@ -1,7 +1,7 @@
 import axios from "axios";
 import i18n from "./i18n";
 
-axios.defaults.baseURL = "https://goldfish-app-bslmb.ondigitalocean.app/api/v1";
+axios.defaults.baseURL = "https://api.victoriaslove.uz";
 
 axios.interceptors.request.use(
   (config) => {

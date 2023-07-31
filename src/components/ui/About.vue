@@ -3,17 +3,11 @@
     <div class="container">
       <div class="grid md:grid-cols-2 gap-6 md:gap-12 lg:gap-24">
         <div class="order-2 md:order-1">
-          <h2 class="text__big-2 pb-6 md:pb-12">ИНТЕРНЕТ-МАГАЗИН ПРОДУКЦИИ VICTORIA'S SECRET В УЗБЕКИСТАНЕ</h2>
-          <p class="leading-relaxed">
-            Компания <span>VICTORIA'S SECRET</span> - это интернет-магазин премиум класса
-            <span class="underline">женского белья, купальников</span>, одежды, косметики и аксессуаров от всемирно
-            известного бренда - тм Victoria's Secret. Мы ориентированы на качественный сервис и VIP-обслуживание. На
-            сайте представлено исключительно оригинальную продукцию «Виктория Сикрет» в <span>УЗБЕКИСТАНЕ</span> с
-            официального каталога тм Victoria's Secret.
-          </p>
+          <h2 class="text__big-2 pb-6 md:pb-12">{{ t("fuw.products") }}</h2>
+          <p class="leading-relaxed">{{ t("fuw.products_desc") }}</p>
           <SButton
             @click="viewMoreBtn = true"
-            text="подробнее"
+            :text="t('fuw.more')"
             variant="outline_pink"
             :loading="viewMoreBtn"
             type="button"
@@ -34,4 +28,6 @@
 
 <script setup>
 import SButton from "../buttons/SButton.vue";
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
 </script>

@@ -1,1 +1,57 @@
-[]
+{
+  "fuw": {
+    "more": "More",
+    "new_arrivals": "NEW ARRIVALS",
+    "recommended": "Recommended",
+    "new": "New",
+    "add_to_card": "Add to cart",
+    "fast_show": "Quick view",
+    "trendinf_now": "Trending right now",
+    "best_sale": "Best sale this week",
+    "show_more": "Show All",
+    "gift_certificate": "GIFT CERTIFICATE",
+    "gift_certificate2": "Victoria's Secret Gift Certificate - She Loves It Gift Card",
+    "view_offers": "VIEW OFFERS",
+    "main_categories": "Main categories",
+    "main_categories2": "50 categories over 1,000 items",
+    "products": "ONLINE SHOP OF VICTORIA'S SECRET PRODUCTS IN UZBEKISTAN",
+    "products_desc": "VICTORIA'S SECRET is an online store of premium lingerie, swimwear, clothes, cosmetics and accessories from the world famous brand - tm Victoria's Secret. We are focused on quality service and VIP service. The site presents only original products \"Victoria's Secret\" in UZBEKISTAN from the official catalog of tm Victoria's Secret.",
+    "news": "News / Blog",
+    "news2": "INTERESTING TO READ",
+    "author": "Author",
+    "inInstagram": "Follow our story on Instagram"
+  },
+  "header": {
+    "order": "FREE SHIPPING! When ordering over 500,000 sum",
+    "catalog": "catalog",
+    "about": "about the brand",
+    "delivery": "Delivery",
+    "payment": "Payment",
+    "stock": "Stocks",
+    "jobs": "Jobs"
+  },
+  "steps": [
+    {
+      "title": "Free Shipping",
+      "desc": "Free shipping on orders over 500,000 sum"
+    },
+    {
+      "title": "Money Back Guarantee",
+      "desc": "100% money back guarantee"
+    },
+    {
+      "title": "Flexible form of payment",
+      "desc": "Pay with several convenient methods"
+    }
+  ],
+  "footer": {
+    "help": "HELP",
+    "payment": "Payment and delivery",
+    "exchange": "Return and Exchange",
+    "info": "INFO",
+    "about": "About the store",
+    "my_office": "MY OFFICE",
+    "favourites": "Favorites",
+    "contacts": "CONTACTS"
+  }
+}
