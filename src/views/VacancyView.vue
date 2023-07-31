@@ -3,8 +3,8 @@
     <div class="container">
       <h2 class="text__big-2 py-8 text-center">Вакансии</h2>
       <ul class="">
-        <li v-for="vc in vacancies" :key="vc.id">
-          <VacancyCard :vacancy="vc" />
+        <li v-for="(vc, i) in store.vacancies" :key="vc.id">
+          <VacancyCard :vacancy="vc" :isLeft="i % 2 == 0" />
         </li>
       </ul>
     </div>
@@ -14,6 +14,9 @@
 <script setup>
 import img from "/src/assets/images/seller.png";
 import VacancyCard from "/src/components/cards/vacancy.vue";
+import { useVacanciesStore } from "../stores/vacancies";
+const store = useVacanciesStore();
+store.getVacancies();
 const vacancies = [
   {
     id: 0,

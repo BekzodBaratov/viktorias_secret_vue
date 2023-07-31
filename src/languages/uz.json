@@ -44,6 +44,25 @@
       "desc": "Bir nechta qulay usullar bilan to'lash"
     }
   ],
+  "basket": {
+    "basket": "savat",
+    "note": "Eslatma",
+    "order": "Etkazib berish",
+    "coupon": "Kupon",
+    "free": "bepul",
+    "discount": "chegirmalar",
+    "total": "jami",
+    "keep_shopping": "Yoki xarid qilishda davom eting",
+    "design": "Dizayn",
+    "back_to_store": "do'konga qaytish",
+    "update_cart": "Savatni yangilash",
+    "check": "Iltimos, mahsulotlaringiz tugashidan oldin tekshiring!",
+    "goods": "Tovar",
+    "cost": "Narx",
+    "qty": "Miqdor",
+    "over": "Jami",
+    "delete": "O'chirish"
+  },
   "footer": {
     "help": "HELP",
     "payment": "To'lov va yetkazib berish",

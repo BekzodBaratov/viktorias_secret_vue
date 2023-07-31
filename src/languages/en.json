@@ -44,6 +44,25 @@
       "desc": "Pay with several convenient methods"
     }
   ],
+  "basket": {
+    "basket": "Basket",
+    "note": "Note",
+    "order": "Delivery",
+    "coupon": "Coupon",
+    "free": "free",
+    "discount": "Discounts",
+    "total": "total",
+    "keep_shopping": "Or keep shopping",
+    "design": "Design",
+    "back_to_store": "back to store",
+    "update_cart": "Update Cart",
+    "check": "Please check now before your items are sold out!",
+    "goods": "Goods",
+    "cost": "Goods",
+    "qty": "Quantity",
+    "over": "Total",
+    "delete": "Delete"
+  },
   "footer": {
     "help": "HELP",
     "payment": "Payment and delivery",

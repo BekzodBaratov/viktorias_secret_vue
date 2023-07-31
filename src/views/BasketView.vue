@@ -1,22 +1,21 @@
 <template>
   <main class="order relative min-h-[100vh]">
     <div class="sm:container mx-auto">
-      <pre>{{ data[0] }}</pre>
-      <h2 class="text__big-2 text-center py-10">Оформление заказа</h2>
+      <h2 class="text__big-2 text-center pt-3 pb-8 sm:py-8 md:py-10 capitalize">{{ t("basket.basket") }}</h2>
       <div class="grid lg:grid-cols-[1.6fr_1fr] gap-12 pb-12 items-start">
         <div>
           <div class="hidden sm:flex bg-color-primary items-center gap-2 py-2 px-3 mb-8">
             <img src="../assets/images/icons/fire.svg" alt="fire" />
-            <p class="text-white">Пожалуйста, проверьте сейчас, пока ваши товары не распроданы!</p>
+            <p class="text-white">{{ t("basket.check") }}</p>
           </div>
           <div class="hidden sm:block relative overflow-x-auto">
             <table class="w-full mb-12">
               <thead class="border-b text-left">
                 <tr>
-                  <th class="pb-4">Товары</th>
-                  <th class="pb-4 pl-4">Цена</th>
-                  <th class="pb-4 pl-4">Количество</th>
-                  <th class="pb-4 pl-4">Итого</th>
+                  <th class="pb-4">{{ t("basket.goods") }}</th>
+                  <th class="pb-4 pl-4">{{ t("basket.cost") }}</th>
+                  <th class="pb-4 pl-4">{{ t("basket.qty") }}</th>
+                  <th class="pb-4 pl-4">{{ t("basket.over") }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -29,7 +28,7 @@
                       <div>
                         <h3 class="text__primary pb-2 line-clamp-1">{{ pr.title }}</h3>
                         <p class="text__secondary-gray pb-1 line-clamp-1">{{ pr.desc }}</p>
-                        <p class="underline cursor-pointer">Удалить</p>
+                        <p class="underline cursor-pointer">{{ t("basket.delete") }}</p>
                       </div>
                     </div>
                   </td>
@@ -52,43 +51,45 @@
             <div class="flex flex-col gap-4">
               <div class="grid grid-cols-[1fr_3fr] gap-4" v-for="pr in data" :key="pr.id">
                 <img class="w-full h-full object-cover" :src="pr.img" alt="product image" />
-                <div>{{ pr.title }}</div>
+                <div>
+                  <h3 class="text__primary pb-1 line-clamp-1">{{ pr.title }}</h3>
+                  <p class="text__secondary-gray pb-1 line-clamp-1">{{ pr.desc }}</p>
+                  <p class="text__primary-pink-bold pb-2 min-w-max">{{ formatNumber(pr.price / 2) }} сум</p>
+                  <div class="flex justify-start gap-6 items-center">
+                    <Counter @handleCount="handleCount" :count="pr.count" />
+                    <p class="border-b border-black cursor-pointer">{{ t("basket.delete") }}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div class="hidden sm:flex justify-between">
             <SButton
-              @click="viewMoreBtn = true"
+              @click="router.go(-1)"
               text=""
               variant="primary"
-              :loading="viewMoreBtn"
               type="button"
               textClass="''"
               customClass=""
               :hasShadow="true"
-              spinnerColor="black"
-              :disabled="viewMoreBtn"
             >
               <div class="flex gap-2 items-center capitalize">
                 <i class="fa-solid fa-rotate-left"></i>
-                <p>назад в магазин</p>
+                <p>{{ t("basket.back_to_store") }}</p>
               </div>
             </SButton>
             <SButton
-              @click="viewMoreBtn = true"
+              @click="router.go()"
               text=""
               variant="secondary"
-              :loading="viewMoreBtn"
               type="button"
               textClass="''"
               customClass=""
               :hasShadow="true"
-              spinnerColor="black"
-              :disabled="viewMoreBtn"
             >
               <div class="flex gap-2 items-center capitalize">
                 <i class="fa-solid fa-arrows-rotate"></i>
-                <p>Обновить корзину</p>
+                <p>{{ t("basket.update_cart") }}</p>
               </div>
             </SButton>
           </div>
@@ -99,63 +100,55 @@
               <div class="flex justify-between gap-2 items-center px-6">
                 <div class="flex gap-2 items-center">
                   <i class="fas fa-edit"></i>
-                  <p class="py-6">Примечание</p>
+                  <p class="py-6">{{ t("basket.note") }}</p>
                 </div>
                 <div class="flex gap-2 items-center">
                   <i class="fas fa-truck"></i>
-                  <p class="py-6">Доставка</p>
+                  <p class="py-6">{{ t("basket.order") }}</p>
                 </div>
                 <div class="flex gap-2 items-center">
                   <i class="fa-solid fa-ticket"></i>
-                  <p class="py-6">Купон</p>
+                  <p class="py-6">{{ t("basket.coupon") }}</p>
                 </div>
               </div>
             </div>
             <div class="px-6 space-y-3 pt-4">
               <div class="flex justify-between">
-                <p>Доставка</p>
-                <p class="font-semibold text-color-primary uppercase">бесплатно</p>
+                <p>{{ t("basket.order") }}</p>
+                <p class="font-semibold text-color-primary uppercase">{{ t("basket.free") }}</p>
               </div>
               <div class="flex justify-between">
-                <p>Скидки</p>
+                <p>{{ t("basket.discount") }}</p>
                 <p class="font-semibold">-144 000 сум</p>
               </div>
               <hr />
               <div class="flex justify-between">
-                <p class="text__primary capitalize">итог</p>
+                <p class="text__primary capitalize">{{ t("basket.total") }}</p>
                 <p class="text__primary">320 000 сум</p>
               </div>
             </div>
             <form class="flex flex-col p-6 pt-3">
-              <Input placeholder="Код скидки" inputType="number" />
-              <SButton
-                @click="viewMoreBtn = true"
-                text="Просмотреть корзину"
-                variant="secondary"
-                :loading="viewMoreBtn"
-                type="button"
-                textClass="''"
-                customClass="mt-3"
-                :hasShadow="true"
-                spinnerColor="black"
-                :disabled="viewMoreBtn"
-              />
-              <SButton
-                @click="viewMoreBtn = true"
-                text="Оформить"
-                variant="primary"
-                :loading="viewMoreBtn"
-                type="button"
-                textClass="''"
-                customClass="mt-2"
-                :hasShadow="true"
-                spinnerColor="black"
-                :disabled="viewMoreBtn"
-              />
-              <RouterLink to="/" class="link text-center pt-2">Или продолжайте совершать покупки</RouterLink>
+              <RouterLink class="flex" to="/order">
+                <SButton
+                  @click="viewMoreBtn = true"
+                  :text="t('basket.design')"
+                  variant="primary"
+                  :loading="viewMoreBtn"
+                  type="button"
+                  textClass="''"
+                  customClass="mt-2 py-3 grow"
+                  :hasShadow="true"
+                  spinnerColor="black"
+                  :disabled="viewMoreBtn"
+                />
+              </RouterLink>
+              <RouterLink to="/product_filter" class="link text-center pt-2">{{
+                t("basket.keep_shopping")
+              }}</RouterLink>
             </form>
           </div>
         </div>
+        <div class="sm:hidden h-[288px]"></div>
       </div>
     </div>
   </main>
@@ -166,7 +159,10 @@ import { ref } from "vue";
 import SButton from "../components/buttons/SButton.vue";
 import Counter from "../components/input/counter.vue";
 import formatNumber from "../helpers/formatNumber";
-import Input from "../components/input/productInput.vue";
+import { useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
+const router = useRouter();
+const { t } = useI18n();
 
 const viewMoreBtn = ref(false);
 const payType = ref(false);
