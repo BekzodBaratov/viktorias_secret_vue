@@ -1,5 +1,5 @@
 <template>
-  <pre>{{ store.products[0] }}</pre>
+  <!-- <pre>{{ store.products[0] }}</pre> -->
   <swiper
     :navigation="true"
     :pagination="{ clickable: true }"

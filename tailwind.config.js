@@ -14,9 +14,6 @@ module.exports = {
         "color-line": "#E5E5E5",
         "color-danger": "#DB4444",
       },
-      aspectRatio: {
-        "3/4": "3 / 4",
-      },
       screens: {
         xxs: "450px",
         xs: "576px",
@@ -26,6 +23,7 @@ module.exports = {
         card2: "0 -4px 10px rgba(0, 0, 0, 0.2)",
       },
       aspectRatio: {
+        "3/4": "3 / 4",
         "16/9": "16/9",
         banner: "19/6",
       },

@@ -1,7 +1,12 @@
 <template>
   <div class="card flex flex-col">
     <div class="relative overflow-hidden group bg-white min-h-max">
-      <img class="w-full aspect-3/4 min-h-max object-contain object-center" :src="card.images" alt="image_product" />
+      <img
+        v-if="props.card.images"
+        class="w-full aspect-3/4 min-h-max object-cover object-center"
+        :src="props.card.images[0].image_url"
+        alt="image_product"
+      />
       <div class="absolute top-2 left-2">
         <ul class="flex gap-2">
           <li
@@ -28,7 +33,7 @@
           <li>
             <abbr @click="emit('add_to_fav', props.card)" :title="t('fuw.add_to_fav')">
               <div class="bg-white p-2 rounded-md shadow-md flex justify-center items-center">
-                <img v-if="props.fav" class="w-5 md:w-6" src="/src/assets/images/icons/heart.svg" alt="heart" />
+                <img v-if="!props.fav" class="w-5 md:w-6" src="/src/assets/images/icons/heart.svg" alt="heart" />
                 <img v-else class="w-5 md:w-6" src="/src/assets/images/icons/heart_2.svg" alt="heart" />
               </div>
             </abbr>

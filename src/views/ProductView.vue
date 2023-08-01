@@ -1,22 +1,28 @@
 <template>
   <main class="product my-12">
+    <!-- <pre>{{ store.product }}</pre> -->
     <div class="container">
       <div class="grid grid-cols-2 gap-6">
         <div class="grid grid-cols-[1fr_4fr] gap-3">
-          <div class="grid grid-rows-4 gap-3">
-            <div v-for="(img, i) in product.images" :key="i" @click="selectedImg = i" class="">
-              <img :src="img" alt="product" />
+          <div class="flex flex-col items-start justify-start gap-3">
+            <div v-for="(img, i) in store.product.images" :key="i" @click="selectedImg = i" class="">
+              <img class="w-full" :src="img.image_url" alt="product" />
             </div>
           </div>
           <div class="h-full">
-            <img class="h-full w-full object-contain object-top" :src="product.images[selectedImg]" alt="image" />
+            <img
+              v-if="store.product.images"
+              class="h-full w-full object-contain object-top"
+              :src="store.product.images[selectedImg].image_url"
+              alt="image"
+            />
           </div>
         </div>
         <div class="content">
-          <p class="text__primary-pink">{{ product.category }}</p>
-          <h2 class="text__big-2 pb-3">{{ product.title }}</h2>
-          <div class="flex divide-x">
-            <div class="flex gap-2 px-3 items-center pb-4">
+          <p class="text__primary-pink">{{ store.product.brand_name }}</p>
+          <h2 class="text__big-2 pb-3">{{ gggg("_product_name") }}</h2>
+          <!-- <div class="flex divide-x"> -->
+          <!-- <div class="flex gap-2 px-3 items-center pb-4">
               <div>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -28,43 +34,27 @@
             </div>
             <p class="text__primary px-3 text-center">
               Артикул: <span class="text__secondary">{{ product.vendorCode }}</span>
-            </p>
-            <p class="text__primary-pink-bold px-3 text-center">в наличии</p>
-          </div>
-          <h3 class="text-4xl font-semibold text-color-primary pb-6">{{ formatNumber(product.price) }} сум</h3>
-          <p class="text__secondary-gray mb-6 border-color-line line-clamp-2">{{ product.desc }}</p>
+            </p> -->
+          <p class="text__primary-pink-bold capitalize">{{ gggg("_status") }}</p>
+          <!-- </div> -->
+          <h3 class="text-4xl font-semibold text-color-primary pb-6">
+            {{ formatNumber(store.product.price) }} {{ store.product.valyuta }}
+          </h3>
+          <p class="text__secondary-gray mb-6 border-color-line line-clamp-2">
+            {{ gggg("_description") }}
+          </p>
           <hr />
-          <p class="text__primary pt-4 pb-2">Размер: <span class="text__secondary uppercase">M</span></p>
-          <div class="flex gap-2 items-center pb-4">
-            <span
-              class="border w-10 h-8 uppercase rounded-sm cursor-pointer font-bold flex justify-center items-center hover:bg-black hover:text-white"
-              v-for="(sz, i) in product.sizes"
-              :key="sz.id"
-              :class="i == selectedSize ? 'bg-black text-white' : ''"
-              @click="selectedSize = i"
-            >
-              {{ sz.size }}
-            </span>
-            <span class="link-underline">Размеры и соответствия</span>
-          </div>
-          <p class="text__primary pt-4 pb-3">Цвет: <span class="text__secondary uppercase">изумрудный</span></p>
-          <ul class="flex gap-2 items-center pb-4">
-            <li
-              v-for="(val, i) in 6"
-              :key="i"
-              :class="i == selectedColor ? 'border-color-black2' : 'border-white'"
-              class="relative border rounded-sm group"
-            >
-              <div @click="selectedColor = i">
-                <img class="w-12 h-12 object-contain object-center" :src="img3" alt="image" />
-              </div>
-              <Tooltip :text="product.colors[i].color" />
-            </li>
-          </ul>
+          <p v-if="store.product.size" class="text__primary pt-4 pb-2">
+            Размер: <span class="text__secondary uppercase">{{ store.product.size }}</span>
+          </p>
+
+          <p v-if="store.product.color" class="text__primary pt-4 pb-3">
+            Цвет: <span class="text__secondary uppercase">{{ store.product.color }}</span>
+          </p>
           <p class="text__primary pt-4 pb-3">Количество:</p>
           <ul class="flex gap-6 items-center">
             <li>
-              <Count />
+              <Count @handleCount="handleCount" :maxQty="store.product.quantity" />
             </li>
             <li>
               <SButton
@@ -81,14 +71,9 @@
               />
             </li>
             <li>
-              <div class="border border-color-line px-2 py-1 rounded">
-                <i class="fa-solid fa-repeat text-xl"></i>
-              </div>
-            </li>
-            <li>
               <div class="relative group border border-color-line px-2 py-1 rounded">
                 <i class="far fa-heart text-xl"></i>
-                <Tooltip text="Избранные" />
+                <Tooltip :text="t('fuw.favourites')" />
               </div>
             </li>
           </ul>
@@ -143,10 +128,10 @@
         <p class="text__secondary-gray pb-6">{{ product.desc }}</p>
         <div class="flex gap-3 justify-center">
           <div v-for="pr in product.images" :key="pr">
-            <img width="200" :src="pr" :alt="pr" />
+            <!-- <img width="200" :src="pr" :alt="pr" /> -->
           </div>
         </div>
-        <Steps hasContainer="true" />
+        <Steps :hasContainer="true" />
       </div>
       <p class="text__big-3 text-center pb-8">Похожие товары</p>
       <SmilarsSwiper />
@@ -167,13 +152,19 @@ import img1 from "../assets/images/product-thumb1.png";
 import img2 from "../assets/images/product-thumb2.png";
 import img3 from "../assets/images/product-thumb3.png";
 import { useProductStore } from "../stores/product";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 const route = useRoute();
 const store = useProductStore();
-const selectedImg = ref(2);
-const selectedSize = ref(0);
-const selectedColor = ref(0);
+const selectedImg = ref(1);
 const selectedAddition = ref("description");
 store.getProduct(route.params.id);
+
+const lang = ref(localStorage.getItem("lng"));
+const gggg = (ff) => store.product[lang.value + ff];
+
+const handleCount = (num) => console.log(num);
 
 const product = {
   images: [img1, img2, img3],
@@ -202,8 +193,6 @@ const product = {
     { id: 5, color: "brown", image: img1 },
   ],
 };
-
-console.log(route.params.id);
 </script>
 
 <style scoped>
