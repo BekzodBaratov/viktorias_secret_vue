@@ -50,7 +50,7 @@ const emit = defineEmits(["closeModal", "fetchModal"]);
 
 const modalValue = ref(props.value);
 const openCondition = ref(props.isOpen);
-console.log(props.data);
+// console.log(props.data);
 
 function cancelModal() {
   openCondition.value = false;

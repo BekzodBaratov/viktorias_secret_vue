@@ -31,13 +31,16 @@
         </div> -->
 
         <div class="flex flex-col">
-          <Input
-            :modelValue="data.phone"
-            v-model="data.phone"
-            inputType="phone"
-            label="Номер телефона*"
-            placeholder="placeholder"
-          />
+          <div v-if="step === 1">
+            <form action="handlePhoneNumber"></form>
+            <Input
+              :modelValue="data.phone_number"
+              v-model="data.phone_number"
+              inputType="phone"
+              label="Номер телефона*"
+              placeholder="placeholder"
+            />
+          </div>
           <Input
             :modelValue="data.password"
             v-model="data.password"
@@ -90,12 +93,14 @@ import Input from "../components/input/productInput.vue";
 import SButton from "../components/buttons/SButton.vue";
 import { ref } from "vue";
 
+const step = ref(1);
+
 const showPass = ref(false);
 const showPass2 = ref(false);
 
 const viewMoreBtn = ref(false);
 const data = {
-  phone: "+998 ",
+  phone_number: "+998 ",
   password: "",
   confirmPassword: "",
 };

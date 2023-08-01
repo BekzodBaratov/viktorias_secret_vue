@@ -1,4 +1,5 @@
 <template>
+  <pre>{{ store.products[0] }}</pre>
   <swiper
     :navigation="true"
     :pagination="{ clickable: true }"
@@ -12,8 +13,8 @@
     :modules="[Navigation, Autoplay]"
     class="mainSwiper"
   >
-    <swiper-slide v-for="card in data" :key="card.id">
-      <Card :card="card" />
+    <swiper-slide v-for="card in store.products" :key="card.id">
+      <Card :card="card" :fav="store.hasFav(card.id)" @add_to_fav="(val) => store.addToFavourites(val)" />
     </swiper-slide>
   </swiper>
 </template>
@@ -26,6 +27,9 @@ import { Navigation, Autoplay } from "swiper";
 import img1 from "/src/assets/images/IMGproduct.png";
 import img2 from "/src/assets/images/IMGproduct(1).png";
 import Card from "../cards/mainProduct.vue";
+import { useProductStore } from "../../stores/product";
+const store = useProductStore();
+store.getProducts();
 
 const data = [
   {

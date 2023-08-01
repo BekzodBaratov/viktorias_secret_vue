@@ -5,30 +5,27 @@ import { useToast } from "vue-toastification";
 export const useProfileStore = defineStore("profile", {
   state: () => ({
     user: {},
+    token: "",
   }),
+  getters: {
+    isVerified() {
+      return Boolean(this.token && this.user.id);
+    },
+  },
   actions: {
     async login(data) {
-      const { phone_number, password } = data;
       const toast = useToast();
       try {
-        const res = await axios.post("/users/login", { phone_number, password });
+        const res = await axios.post("/users/login", data);
         console.log(res);
+        this.token = res.data.token;
+        this.user = res.data.users;
       } catch (error) {
-        console.log(error);
-        toast.error("Something went wrong, please try again");
+        console.log(error.response.data.error);
+        toast.error(error.response.data.error);
       }
     },
     async signup(data) {
-      // const {
-      //   full_name,
-      //   phone_number,
-      //   password,
-      //   brand_name,
-      //   brand_uz_country,
-      //   brand_ru_country,
-      //   brand_en_country,
-      //   adress,
-      // } = data;
       const toast = useToast();
       try {
         const res = await axios.post("/users", data);
@@ -48,4 +45,5 @@ export const useProfileStore = defineStore("profile", {
       }
     },
   },
+  persist: true,
 });

@@ -166,12 +166,14 @@ import SmilarsSwiper from "../components/swipers/SmilarsSwiper.vue";
 import img1 from "../assets/images/product-thumb1.png";
 import img2 from "../assets/images/product-thumb2.png";
 import img3 from "../assets/images/product-thumb3.png";
-
+import { useProductStore } from "../stores/product";
 const route = useRoute();
+const store = useProductStore();
 const selectedImg = ref(2);
 const selectedSize = ref(0);
 const selectedColor = ref(0);
 const selectedAddition = ref("description");
+store.getProduct(route.params.id);
 
 const product = {
   images: [img1, img2, img3],

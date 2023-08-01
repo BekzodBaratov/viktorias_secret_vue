@@ -14,6 +14,7 @@ import SalesView from "../views/SalesView.vue";
 import SignupView from "../views/SignupView.vue";
 import VacancyView from "../views/VacancyView.vue";
 import NotFoundView from "../views/404.vue";
+import FavouritesView from "../views/Favourites.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,15 +24,16 @@ const router = createRouter({
     { path: "/basket", name: "basket", component: BasketView, meta: { auth: false } },
     { path: "/categories", name: "categories", component: CategoryView, meta: { auth: false } },
     { path: "/contact", name: "contact", component: ContactView, meta: { auth: false } },
+    { path: "/favourites", name: "Favourites", component: FavouritesView, meta: { auth: false } },
     { path: "/product_filter", name: "filter", component: FilterView, meta: { auth: false } },
     { path: "/login", name: "login", component: LoginView, meta: { auth: false, layout: "login" } },
-    { path: "/signup", name: "signup", component: SignupView, meta: { auth: false, layout: "signup" } },
+    { path: "/signup", name: "signup", component: SignupView, meta: { auth: false, layout: "login" } },
     { path: "/order", name: "order", component: OrderView, meta: { auth: false } },
     { path: "/pages", name: "pages", component: PagesView, meta: { auth: false } },
     { path: "/product/:id", name: "product", component: ProductView, meta: { auth: false } },
     { path: "/sales", name: "sales", component: SalesView, meta: { auth: false } },
     { path: "/vacancies", name: "vacancy", component: VacancyView, meta: { auth: false } },
-    { path: "/:pathMatch(.*)*", name: "signup", component: NotFoundView, meta: { auth: false, layout: "notFound" } },
+    { path: "/:pathMatch(.*)*", name: "not_found", component: NotFoundView, meta: { auth: false, layout: "notFound" } },
   ],
 });
 
