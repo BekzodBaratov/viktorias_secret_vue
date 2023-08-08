@@ -22,7 +22,7 @@
         <RouterLink to="/sales" class="hidden md:flex gap-4 text-color-primary group">
           <p>{{ t("header.order") }}</p>
           <p class="flex gap-2">
-            Подробнее
+            {{ t("fuw.more") }}
             <img src="/src/assets/images/icons/arrow-right.svg" class="group-hover:translate-x-1" alt="right-arrow" />
           </p>
         </RouterLink>

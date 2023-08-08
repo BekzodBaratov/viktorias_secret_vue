@@ -1,13 +1,15 @@
 <template>
   <div class="card space-y-3">
-    <img :src="props.news.img" alt="img" />
-    <p class="text__primary-pink">{{ props.news.category }}</p>
-    <h2 class="text__primary">{{ props.news.title }}</h2>
-    <p><span class="text-color-black2">Автор</span> {{ props.news.author }} | {{ props.news.date }}</p>
+    <!-- <pre>{{ props.news }}</pre> -->
+    <img :src="props.news.image_url" alt="img" />
+    <h2 class="text__primary">{{ dataGet("desc_") }}</h2>
+    <p class="text__secondary-gray">{{ dataGet("title_") }}</p>
   </div>
 </template>
 
 <script setup>
 const props = defineProps(["news"]);
+const lang = localStorage.getItem("lng");
+const dataGet = (name) => props.news[name + lang];
 console.log(props.news);
 </script>

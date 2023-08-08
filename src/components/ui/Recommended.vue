@@ -3,7 +3,7 @@
     <div class="container">
       <ul class="grid md:grid-cols-2 items-center gap-10">
         <li>
-          <h2 class="text__big-2 pb-4">Рекомендуем</h2>
+          <h2 class="text__big-2 pb-4">{{ t("fuw.recommended") }}</h2>
           <ul class="grid grid-cols-2 gap-8">
             <li v-for="card in data" :key="card.id">
               <Card :card="card" />
@@ -22,6 +22,8 @@
 import Card from "../cards/mainProduct.vue";
 import img1 from "/src/assets/images/IMGproduct.png";
 import img2 from "/src/assets/images/IMGproduct(1).png";
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
 
 const data = [
   {

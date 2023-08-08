@@ -7,7 +7,7 @@
       <center>
         <RouterLink to="/product_filter">
           <SButton
-            text="Показать все"
+            :text="t('fuw.show_more')"
             variant="outline"
             type="button"
             textClass="''"
